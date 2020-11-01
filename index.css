@@ -84,8 +84,7 @@ button{
     padding-bottom: 5px;
 }
 
-
-#mindset{
+#mindset, #cantFocus, #wastingTime, #pomodoro, #timer, #peakProductivity, #rewarding, #distractions, #yes, #no, #tooEasy, #tooHard, #habits, #hasHabit, #noHabit{
     color: black;
     background-color: #596f7f;
     font-size: 20px;
