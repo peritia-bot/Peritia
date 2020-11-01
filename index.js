@@ -41,7 +41,6 @@ function sendMessage(){
         var timeHabitCell = timeHabitRow.insertCell(-1);
         console.log("It got here");
         timeHabitCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Sounds good! Make sure to write this down somewhere you'll see everyday. Then, in order to ensure that you are trying your best to build this habit, make sure you visit this webpage everyday. That way you can let me know if you're on track or not, and if you ever fall off, I'll be here to help you!</p>";
-        document.getElementById("sendButton").disabled = true;
     }
 }
 
