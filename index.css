@@ -1,0 +1,96 @@
+/* 
+background: #a2cfec
+peritia messages: #8aa3bb
+user messages: try #596f7f, i need to see what this will look like
+send button: #c1c1c1
+choice button: #596f7f
+*/
+
+body{
+    height: 100%;
+    background-color: #a2cfec;
+    font-family: "Arial";
+}
+
+#chatBox{ 
+    width: 100%;
+}
+
+table, th, td{
+    padding: 5px;
+}
+
+.table{
+    height: 600px;
+    background-color: #96bae0;
+    overflow-y: scroll;
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+td {
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#intro, #introtest, #userBox{
+    font-size: 20px;
+    color: white;
+    
+}
+
+#intro p, #intro ul, li, #introtest, #userBox{
+    width: 80%;
+    background-color: #8aa3bb;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+#userBox{
+    background-color: #596f7f;
+    width: 70%;
+    position: relative;
+    left: 100px;
+}
+
+#userMessageTable, #userBox{
+    padding-right: 45px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+.userInput {
+    text-align: center;
+}
+
+input{
+    width: 32.7%;
+    font-size: 16px;
+    padding: 16px;
+    position: relative;
+    left: 1.6%;
+}
+
+button{
+    position: relative;
+    background-color: #c1c1c1;
+    right: 2.5%;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+#mindset{
+    color: black;
+    background-color: #596f7f;
+    font-size: 20px;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    width: 75%;
+}
