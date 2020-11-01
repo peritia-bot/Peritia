@@ -233,7 +233,6 @@ function yes(){
 function no(){
     document.getElementById("yes").disabled = true;
     document.getElementById("no").disabled = true;
-    document.getElementById("sendButton").disabled = true;
     document.getElementById("pomodoro").disabled = true;
     document.getElementById("timer").disabled = true;
     document.getElementById("peakProductivity").disabled = true;
