@@ -21,7 +21,7 @@ function sendMessage(){
         if (userMessage.toLowerCase().includes('procrastination')){
             firstStagePassed = true;
             // Yes or no, depending on which one is clicked, a specific function will be called, make sure to do this, Arub is currently putting in the responses, should just be a lot of if statements and checking if variables are true or not 
-            botCell1.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Procrastination can certainly feel like a tough cylce to escape, so the first step is to take a breath and let go of self-critical thoughts. Everyone procrastinates, and while it is certainly tough, you can get out of this mindset with the right help! So what exacly seems to be the problem?<br><br><button id='mindset' onclick='wastingTime()'>I feel like I'm wasting time</button><br><button id='mindset' onclick='cantFocus()'>I just can't focus</button></p>";
+            botCell1.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Procrastination can certainly feel like a tough cylce to escape, so the first step is to take a breath and let go of self-critical thoughts. Everyone procrastinates, and while it is certainly tough, you can get out of this mindset with the right help! So what exacly seems to be the problem?<br><br><button id='wastingTime' onclick='wastingTime()'>I feel like I'm wasting time</button><br><button id='cantFocus' onclick='cantFocus()'>I just can't focus</button></p>";
         } else if (userMessage.toLowerCase().includes('productivity')){
             firstStagePassed = true;
             botCell1.innerHTML = "<p id='introtest'><strong>Peritia: </strong> <br>Being productive can feel extremely difficult at times. It's very important to have the right mindset, so let's start with that. Let me know when you're ready to proceed!<br><br><button id='mindset' onclick='mindsetHelp()'>Ok, let's work on mindset</button><br></p>";
@@ -35,6 +35,8 @@ function sendMessage(){
         habitCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Awesome! How long everyday would you like to practice this for?</p>";
 
     } else if (habitStagePassed == true){
+        document.getElementById("sendButton").disabled = true;
+        
         var timeHabitRow = table.insertRow(-1);
         var timeHabitCell = timeHabitRow.insertCell(-1);
         console.log("It got here");
@@ -44,23 +46,31 @@ function sendMessage(){
 
 
 function mindsetHelp(){
+
+    document.getElementById("mindset").disabled = true;
+
     // Function if the user clicks to work on their mindset
     var table = document.getElementById("chatBox");
     var mindsetRow = table.insertRow(-1);
     var mindsetCell = mindsetRow.insertCell(-1);
     mindsetStagePassed = true;
-    mindsetCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Being productive in the long term is all about habits - creating good ones and getting rid of bad ones. You can't always rely on willpower to get you through things. Slowly try to build good habits, because in the long term those are what will help you. <br><br><button id='mindset' onclick='goodHabits()'>How do I build good habits?</button></p>";
+    mindsetCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Being productive in the long term is all about habits - creating good ones and getting rid of bad ones. You can't always rely on willpower to get you through things. Slowly try to build good habits, because in the long term those are what will help you. <br><br><button id='habits' onclick='goodHabits()'>How do I build good habits?</button></p>";
 }
 
 function goodHabits(){
+    document.getElementById("habits").disabled = true;
+
     var table = document.getElementById("chatBox");
     var goodHabitsRow = table.insertRow(-1);
     var goodHabitsCell = goodHabitsRow.insertCell(-1);
     
-    goodHabitsCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Start off by picking just one habit, and focus on it. Set aside a specific time in the day - it could be first thing in the morning, maybe after lunch, or even in the evening. What matters is that you keep a routine and do it consistently. That is the hardest part, so it'll take time, and you might miss out on a few days here and there, but be patient with yourself! As long as you consistently put in effort, you will see yourself imrprove. Can you think of one habit that you can start with?<br><br><button id='mindset' onclick='hasHabit()'>I can</button><br><button id='mindset' onclick='noHabit()'>I can't</button></p>"
+    goodHabitsCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Start off by picking just one habit, and focus on it. Set aside a specific time in the day - it could be first thing in the morning, maybe after lunch, or even in the evening. What matters is that you keep a routine and do it consistently. That is the hardest part, so it'll take time, and you might miss out on a few days here and there, but be patient with yourself! As long as you consistently put in effort, you will see yourself imrprove. Can you think of one habit that you can start with?<br><br><button id='hasHabit' onclick='hasHabit()'>I can</button><br><button id='noHabit' onclick='noHabit()'>I can't</button></p>"
 }
 
 function hasHabit(){
+    document.getElementById("hasHabit").disabled = true;
+    document.getElementById("noHabit").disabled = true;
+
     // This function will be called if the user selected they do have a habit to work on productivity with
     var table = document.getElementById("chatBox");
     var hasHabitRow = table.insertRow(-1);
@@ -70,6 +80,9 @@ function hasHabit(){
 }
 
 function noHabit(){
+    document.getElementById("hasHabit").disabled = true;
+    document.getElementById("noHabit").disabled = true;
+
     var table = document.getElementById("chatBox");
     var noHabitRow = table.insertRow(-1);
     var noHabitCell = noHabitRow.insertCell(-1);
@@ -78,22 +91,39 @@ function noHabit(){
 }
 
 function wastingTime(){
+    document.getElementById("wastingTime").disabled = true;
+    document.getElementById("cantFocus").disabled = true;
+
     var table = document.getElementById("chatBox");
     var wastingTimeRow = table.insertRow(-1);
     var wastingTimeCell = wastingTimeRow.insertCell(-1);
 
-    wastingTimeCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Procrastination tends to be an avoidance behaviour for when you feel fear or dread, or have something to be anxious about. Sometimes, we tend to avoid something due to these feelings and don't recognize it conciously. <br><br>Fighting these feelings can be difficult, but there are a few effective ways to dissolve these feelings! <br><br>Which one would you like to learn about first? <br><br><button id='mindset' onclick='pomodoro()'>The Pomodoro Technique</button><br><button id='mindset' onclick='timer()'>Using a Timer</button><br><button id='mindset' onclick='productivity()'>Discovering Your Peak Productivity Time</button><br><button id='mindset' onclick='rewarding()'>Rewarding Yourself</button><br><button id='mindset' onclick='distractions()'>Reducing Distractions</button></p>"
+    wastingTimeCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Procrastination tends to be an avoidance behaviour for when you feel fear or dread, or have something to be anxious about. Sometimes, we tend to avoid something due to these feelings and don't recognize it conciously. <br><br>Fighting these feelings can be difficult, but there are a few effective ways to dissolve these feelings! <br><br>Which one would you like to learn about first? <br><br><button id='pomodoro' onclick='pomodoro()'>The Pomodoro Technique</button><br><button id='timer' onclick='timer()'>Using a Timer</button><br><button id='peakProductivity' onclick='productivity()'>Discovering Your Peak Productivity Time</button><br><button id='rewarding' onclick='rewarding()'>Rewarding Yourself</button><br><button id='distractions' onclick='distractions()'>Reducing Distractions</button></p>"
+    document.getElementById("pomodoro").disabled = false;
+    document.getElementById("timer").disabled = false;
+    document.getElementById("peakProductivity").disabled = false;
+    document.getElementById("rewarding").disabled = false;
+    document.getElementById("distractions").disabled = false;
+
+    console.log(document.getElementById("distractions").disabled == false);
 }
 
 function cantFocus(){
+    document.getElementById("wastingTime").disabled = true;
+    document.getElementById("cantFocus").disabled = true;
+
     var table = document.getElementById("chatBox");
     var cantFocusRow = table.insertRow(-1);
     var cantFocusCell = cantFocusRow.insertCell(-1);
 
-    cantFocusCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>I'm so sorry to hear - I understand that it is stressful when you want to work, but your brain doesn't seem to agree. <br>In order to combat this, it can be useful to understand why we procrastinate. <br><br>We tend to procrastinate for two reasons.<br>1) We think our task is too large. When tasks we are trying to complete are too complicated or difficult, it can overwhelm us. This makes us not want to start the task at all. <br>2) We think our task is too small. This might seem odd - why would be procrastinate on something that's too easy? Essentially, we tend to enjoy challenging ourselves at least a little bit. If a task is too easy, it could be too boring for us to start! <br>Which category do you think you're in? <br><button id='mindset' onclick='tooEasy()'>Too Easy!</button><br><button id='mindset' onclick='tooHard()'>Too Hard!</button></p>";
+    cantFocusCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>I'm so sorry to hear - I understand that it is stressful when you want to work, but your brain doesn't seem to agree. <br>In order to combat this, it can be useful to understand why we procrastinate. <br><br>We tend to procrastinate for two reasons.<br>1) We think our task is too large. When tasks we are trying to complete are too complicated or difficult, it can overwhelm us. This makes us not want to start the task at all. <br>2) We think our task is too small. This might seem odd - why would be procrastinate on something that's too easy? Essentially, we tend to enjoy challenging ourselves at least a little bit. If a task is too easy, it could be too boring for us to start! <br>Which category do you think you're in? <br><button id='tooEasy' onclick='tooEasy()'>Too Easy!</button><br><button id='tooHard' onclick='tooHard()'>Too Hard!</button></p>";
 }
 
 function tooEasy(){
+    document.getElementById("tooEasy").disabled = true;
+    document.getElementById("tooHard").disabled = true;
+    document.getElementById("sendButton").disabled = true;
+
     var table = document.getElementById("chatBox");
     var tooEasyRow = table.insertRow(-1);
     var tooEasyCell = tooEasyRow.insertCell(-1);
@@ -102,6 +132,10 @@ function tooEasy(){
 }
 
 function tooHard(){
+    document.getElementById("tooEasy").disabled = true;
+    document.getElementById("tooHard").disabled = true;
+    document.getElementById("sendButton").disabled = true;
+
     var table = document.getElementById("chatBox");
     var tooHardRow = table.insertRow(-1);
     var tooHardCell = tooHardRow.insertCell(-1);
@@ -110,6 +144,12 @@ function tooHard(){
 }
 
 function pomodoro(){
+    document.getElementById("pomodoro").disabled = true;
+    document.getElementById("timer").disabled = true;
+    document.getElementById("peakProductivity").disabled = true;
+    document.getElementById("rewarding").disabled = true;
+    document.getElementById("distractions").disabled = true;
+
     var table = document.getElementById("chatBox");
     var pomodoroRow = table.insertRow(-1);
     var pomodoroCell = pomodoroRow.insertCell(-1);
@@ -123,9 +163,15 @@ function again(){
     var moreRow = table.insertRow(-1);
     var moreCell = moreRow.insertCell(-1);
 
-    moreCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Would you like to see more techniques? <br><button id='mindset' onclick='yes()'>Yes</button><br><button id='mindset' onclick='no()'>No</button></p>";
+    moreCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>Would you like to see more techniques? <br><button id='yes' onclick='yes()'>Yes</button><br><button id='no' onclick='no()'>No</button></p>";
 }
 function timer(){
+    document.getElementById("pomodoro").disabled = true;
+    document.getElementById("timer").disabled = true;
+    document.getElementById("peakProductivity").disabled = true;
+    document.getElementById("rewarding").disabled = true;
+    document.getElementById("distractions").disabled = true;
+
     var table = document.getElementById("chatBox");
     var timerRow = table.insertRow(-1);
     var timerCell = timerRow.insertCell(-1);
@@ -135,6 +181,12 @@ function timer(){
 }
 
 function productivity(){
+    document.getElementById("pomodoro").disabled = true;
+    document.getElementById("timer").disabled = true;
+    document.getElementById("peakProductivity").disabled = true;
+    document.getElementById("rewarding").disabled = true;
+    document.getElementById("distractions").disabled = true;
+
     var table = document.getElementById("chatBox");
     var productivityRow = table.insertRow(-1);
     var productivityCell = productivityRow.insertCell(-1);
@@ -144,6 +196,12 @@ function productivity(){
 }
 
 function rewarding(){
+    document.getElementById("pomodoro").disabled = true;
+    document.getElementById("timer").disabled = true;
+    document.getElementById("peakProductivity").disabled = true;
+    document.getElementById("rewarding").disabled = true;
+    document.getElementById("distractions").disabled = true;
+
     var table = document.getElementById("chatBox");
     var rewardingRow = table.insertRow(-1);
     var rewardingCell = rewardingRow.insertCell(-1);
@@ -153,6 +211,12 @@ function rewarding(){
 }
 
 function distractions(){
+    document.getElementById("pomodoro").disabled = true;
+    document.getElementById("timer").disabled = true;
+    document.getElementById("peakProductivity").disabled = true;
+    document.getElementById("rewarding").disabled = true;
+    document.getElementById("distractions").disabled = true;
+
     var table = document.getElementById("chatBox");
     var distractionsRow = table.insertRow(-1);
     var distractionsCell = distractionsRow.insertCell(-1);
@@ -167,6 +231,14 @@ function yes(){
 }
 
 function no(){
+    document.getElementById("yes").disabled = true;
+    document.getElementById("no").disabled = true;
+    document.getElementById("sendButton").disabled = true;
+    document.getElementById("pomodoro").disabled = true;
+    document.getElementById("timer").disabled = true;
+    document.getElementById("peakProductivity").disabled = true;
+    document.getElementById("rewarding").disabled = true;
+    document.getElementById("distractions").disabled = true;
     // If the user would not like to see any of the further options
     var table = document.getElementById("chatBox");
     var noRow = table.insertRow(-1);
@@ -174,3 +246,4 @@ function no(){
 
     noCell.innerHTML = "<p id='introtest'><strong>Peritia: </strong><br>I hope you found one or more of these techniques useful, and remember, you can always search the web if you feel like you need a technique that better suits you!</p>";
 }
+
